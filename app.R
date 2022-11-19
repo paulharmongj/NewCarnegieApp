@@ -37,7 +37,7 @@ ui <- fluidPage(
   theme = shinytheme("cosmo"),
   
   # Application title
-  titlePanel("Carnegie Classifications: Montana State Internal"),
+  titlePanel("Carnegie Classifications: Sensitivity Assessment"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
@@ -219,6 +219,7 @@ server <- function(input, output,session) {
     scores21$Symbols[a] <- 80
     scores21$Alpha <- rep(0, nrow(scores21))
     scores21$Alpha[a] <- 1
+    scores21$Status[a] <- "Selected"
     
     
     #creates a plot and colors by Carnegie Classification Colors  
@@ -325,6 +326,7 @@ server <- function(input, output,session) {
     scores18$Symbols[a] <- 1
     scores18$Alpha <- rep(0, nrow(scores18))
     scores18$Alpha[a] <- 1
+    scores18$Status[a] <- "Selected"
    
     scores18 %>% 
       plot_ly(x= ~Ag, y= ~PC, type="scatter", mode="markers",
